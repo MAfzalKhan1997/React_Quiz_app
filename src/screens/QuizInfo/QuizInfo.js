@@ -5,28 +5,28 @@ class QuizInfo extends Component {
     super()
   }
 
-  render(){
-    const {quiz, onBack ,onPress} = this.props;
-    return(
+  render() {
+    const { quiz, onBack, onPress } = this.props;
+    return (
       <div>
-        {console.log(quiz) }
+        {console.log(quiz)}
         <h1>{quiz.name}</h1>
         <ul>
-          {quiz.subQuiz.map((subQuiz,index)=>{
+          {quiz.subQuiz.map((subQuiz, index) => {
             return <li>
               {<h3>{subQuiz.name}</h3>}
               <p>Total Questions: {subQuiz.questions}</p>
               <p>Total Time: {subQuiz.time}</p>
               <button onClick={() => onPress(index)}>Start Quiz</button>
               <button onClick={onBack}>Back</button>
-              </li>
+            </li>
           })}
-          </ul>
- 
+        </ul>
+
       </div>
-      )
-    }
-    
+    )
+  }
+
 }
 
 export default QuizInfo;

@@ -5,22 +5,22 @@ class QuizList extends Component {
     super()
   }
 
-  render(){
-    const {list, onPress} = this.props;
-    return(
+  render() {
+    const { list, onPress } = this.props;
+    return (
       <ul>
         {list.map((quiz, index) => {
-        return <li>
-          {quiz.name}
-          <button onClick={() => onPress(index)}>Join</button>
-        </li>
+          return <li>
+            {quiz.name}
+            <button onClick={() => onPress(index)}>Join</button>
+          </li>
         }
         )}
-        
+
       </ul>
-      )
-    }
-    
+    )
+  }
+
 }
 
 export default QuizList;
