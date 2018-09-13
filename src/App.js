@@ -169,13 +169,13 @@ class App extends Component {
   }
 
   render() {
-    const { quizzes, quiz, started } = this.state;
+    const { quizzes, quiz, started, qstnNo } = this.state;
 
     return (
       <div>
         {!quiz && !started && <QuizList list={quizzes} onPress={this.joinQuiz} />}
         {quiz && !started && <QuizInfo quiz={quiz} onPress={this.startQuiz} onBack={this.showList} />}
-        {started && <StartQuiz qArr={started} />}
+        {started && <StartQuiz qArr={started} qstnNo={qstnNo} />}
       </div>
     )
   }

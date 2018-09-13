@@ -6,13 +6,17 @@ class QuizList extends Component {
   }
 
   render(){
-    const {qArr} = this.props;
+    const {qArr,qstnNo} = this.props;
     return(
       <div>
          
-          <p>{qArr.question}</p>
+          <h3>{qstnNo+1}) {qArr.question}</h3>
           
-
+             <input type="radio" name="option" value="1"/>{qArr.option1}<br/> 
+             <input type="radio" name="option" value="2"/>{qArr.option2}<br/>  
+             <input type="radio" name="option" value="3"/>{qArr.option3}<br/> 
+             <input type="radio" name="option" value="4"/>{qArr.option4} 
+ 
         {console.log(qArr)}
          
       </div>
