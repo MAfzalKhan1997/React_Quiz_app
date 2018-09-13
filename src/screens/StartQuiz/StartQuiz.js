@@ -6,18 +6,16 @@ class QuizList extends Component {
   }
 
   render(){
-    const {list, onPress} = this.props;
+    const {qArr} = this.props;
     return(
-      <ul>
-        {list.map((quiz, index) => {
-        return <li>
-          {quiz.name}
-          <button onClick={() => onPress(index)}>Join</button>
-        </li>
-        }
-        )}
-        
-      </ul>
+      <div>
+         
+          <p>{qArr.question}</p>
+          
+
+        {console.log(qArr)}
+         
+      </div>
       )
     }
     
