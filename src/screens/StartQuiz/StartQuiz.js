@@ -7,13 +7,11 @@ class QuizList extends Component {
     this.state = {
 
       correct: 0,
-      percent: null
+      percent: false
 
     }
 
   }
-
-  // onPress(qstnNo)
 
   updating(qArr, qstnNo) {
     const { onPress } = this.props;
@@ -26,25 +24,37 @@ class QuizList extends Component {
     }
 
     else {
-      if (qArr[qstnNo].answer.match(radio.value)) {
-        // console.log("load**", load)
-        // alert();
-        console.log("answer**", qArr[qstnNo].answer)
+      if ((qstnNo === qArr.length - 1) && (qArr[qstnNo].answer.match(radio.value))) {
+
+        console.log("both**", qArr[qstnNo].answer)
+
 
         this.setState({
-          correct: correct + 1
-        })
-      }
-
-      if (qstnNo === qArr.length - 1) {
-
-        this.setState({
+          correct: correct + 1,
           percent: correct * (100 / qArr.length)
         })
 
-
-        // showResult(qArr.length, correct, percent);
       }
+
+      if (!(qstnNo === qArr.length - 1) && (qArr[qstnNo].answer.match(radio.value))) {
+
+        console.log("lengthnot**", qArr[qstnNo].answer)
+
+
+        this.setState({
+          correct: correct + 1, 
+        })
+
+      }
+      // if (qArr[qstnNo].answer.match(radio.value)) {
+
+      //   console.log("answer**", qArr[qstnNo].answer)
+
+      //   this.setState({
+      //     correct: correct + 1
+      //   })
+      // }
+
 
       else {
         onPress(qstnNo);
@@ -62,25 +72,30 @@ class QuizList extends Component {
     return (
       <div className="App">
 
-     {percent  ? <div>{percent}</div>
-     :
-      <div>
+        {percent !== false ?
 
-        <h3>{qstnNo + 1}) {qArr[qstnNo].question}</h3>
+          <div>
+            <p>Total Questions: {qArr.length}</p>
+            <p>Correct: {correct}</p>
+            <p>Percentage: {percent} %</p>
+          </div>
+          :
+          <div>
 
-        <input type="radio" name="option" value="1" />{qArr[qstnNo].option1}<br />
-        <input type="radio" name="option" value="2" />{qArr[qstnNo].option2}<br />
-        <input type="radio" name="option" value="3" />{qArr[qstnNo].option3}<br />
-        <input type="radio" name="option" value="4" />{qArr[qstnNo].option4}<br />
+            <h3>{qstnNo + 1}) {qArr[qstnNo].question}</h3>
 
-        <button onClick={this.updating.bind(this, qArr, qstnNo)}>Next</button>
+            <input type="radio" name="option" value="1" />{qArr[qstnNo].option1}<br />
+            <input type="radio" name="option" value="2" />{qArr[qstnNo].option2}<br />
+            <input type="radio" name="option" value="3" />{qArr[qstnNo].option3}<br />
+            <input type="radio" name="option" value="4" />{qArr[qstnNo].option4}<br />
 
-        {console.log(correct)}
+            <button onClick={this.updating.bind(this, qArr, qstnNo)}>Next</button>
+
+          </div>
+
+        }
+
       </div>
-     
-    }
-     
-     </div> 
     )
   }
 
