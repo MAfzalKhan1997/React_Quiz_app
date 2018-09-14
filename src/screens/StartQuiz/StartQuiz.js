@@ -16,7 +16,7 @@ class QuizList extends Component {
   // onPress(qstnNo)
 
   updating(qArr, qstnNo) {
-    const { onPress, showResult } = this.props;
+    const { onPress } = this.props;
     const { correct, percent } = this.state;
 
     var radio = document.querySelector("input[name='option']:checked");
@@ -42,7 +42,8 @@ class QuizList extends Component {
           percent: correct * (100 / qArr.length)
         })
 
-        showResult(qArr.length, correct, percent);
+
+        // showResult(qArr.length, correct, percent);
       }
 
       else {
@@ -57,8 +58,12 @@ class QuizList extends Component {
 
   render() {
     const { qArr, qstnNo } = this.props;
-    const { correct } = this.state;
+    const { correct, percent } = this.state;
     return (
+      <div className="App">
+
+     {percent  ? <div>{percent}</div>
+     :
       <div>
 
         <h3>{qstnNo + 1}) {qArr[qstnNo].question}</h3>
@@ -72,6 +77,10 @@ class QuizList extends Component {
 
         {console.log(correct)}
       </div>
+     
+    }
+     
+     </div> 
     )
   }
 
