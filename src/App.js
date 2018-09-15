@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Login from './screens/Login/Login'
+import Signup from './screens/Signup/Signup'
 import QuizList from './screens/QuizList/QuizList'
 import QuizInfo from './screens/QuizInfo/QuizInfo'
 import StartQuiz from './screens/StartQuiz/StartQuiz'
@@ -10,11 +12,137 @@ class App extends Component {
 
     this.state = {
       quizzes: [
+
         {
-          name: 'AngularJs',
+          name: 'HTML',
           subQuiz: [
             {
-              name: 'Quiz 1', questions: '50', time: '60',
+              name: 'Quiz 1', questions: '3', time: '60',
+              qArr: [
+                {
+                  question: "what is use for image insertion",
+                  option1: "img",
+                  option2: "h1",
+                  option3: "none",
+                  option4: "body",
+                  answer: "1"
+                },
+                {
+                  question: "to underline the text",
+                  option1: "u",
+                  option2: "underline",
+                  option3: "style",
+                  option4: "none",
+                  answer: "1"
+                },
+                {
+
+                  question: "HTML stands for?",
+                  option1: "HYPER TEXT MARKUP LANGUAGE'",
+                  option2: "HTPER TEXT TELESCOPR",
+                  option3: "HELP TEXT TERMINAL LANGUAGE",
+                  option4: "NONE",
+                  answer: "1"
+                },
+
+              ]
+            },
+            {
+              name: 'Quiz 2', questions: '3', time: '40',
+              qArr: [
+                {
+                  question: "html use for",
+                  option1: "structure",
+                  option2: "styling",
+                  option3: "scripting",
+                  option4: "none",
+                  answer: "1"
+                },
+                {
+                  question: "to underline the text",
+                  option1: "u",
+                  option2: "underline",
+                  option3: "style",
+                  option4: "none",
+                  answer: "1"
+                },
+                {
+
+                  question: "HTML stands for?",
+                  option1: "HYPER TEXT MARKUP LANGUAGE'",
+                  option2: "HTPER TEXT TELESCOPR",
+                  option3: "HELP TEXT TERMINAL LANGUAGE",
+                  option4: "NONE",
+                  answer: "1"
+                }
+              ]
+            },
+          ]
+        },
+        {
+          name: 'CSS',
+          subQuiz: [
+            {
+              name: 'Quiz 1', questions: '6', time: '60',
+              qArr: [
+                {
+                  question: "Css stands for?",
+                  option1: "cascading style sheet'",
+                  option2: "cascade sheet style",
+                  option3: "color style sheet",
+                  option4: "contrast style sheet",
+                  answer: "1"
+                },
+                {
+                  question: "to change the color we use",
+                  option1: "color:",
+                  option2: "setColor:",
+                  option3: "color-style",
+                  option4: "change-color",
+                  answer: "1"
+                },
+                {
+                  question: "how to link css",
+                  option1: "using link",
+                  option2: "using button",
+                  option3: "using javascript",
+                  option4: "using img",
+                  answer: "1"
+                },
+                {
+                  question: "to change the color we use",
+                  option1: "color:",
+                  option2: "setColor:",
+                  option3: "color-style",
+                  option4: "change-color",
+                  answer: "1"
+                },
+                {
+                  question: "how to link css",
+                  option1: "using link",
+                  option2: "using button",
+                  option3: "using javascript",
+                  option4: "using img",
+                  answer: "1"
+                },
+                {
+                  question: "how to link css",
+                  option1: "using link",
+                  option2: "using button",
+                  option3: "using javascript",
+                  option4: "using img",
+                  answer: "1"
+                },
+
+              ]
+            },
+          ]
+        },
+        {
+          name: 'JavaScript',
+          subQuiz: [
+            {
+              name: 'Quiz 1', questions: '4', time: '60',
               qArr: [
                 {
                   question: "How to create alert box?",
@@ -54,54 +182,44 @@ class App extends Component {
               ]
             },
             {
-              name: 'Quiz 2', questions: '40', time: '40',
-              qArr: [{
-
-                question: "Which creates random number?",
-                option1: "Math.floor()",
-                option2: "Math.ceil()",
-                option3: "Math.random()",
-                option4: "Math.high",
-                answer: "3"
-              },
-              {
-
-                question: "What does array returns?",
-                option1: "function",
-                option2: "object",
-                option3: "index number",
-                option4: "data type",
-                answer: "2"
-              },
-              {
-
-                question: "Object property name & value are separated by?",
-                option1: "semicolon ;",
-                option2: "colon :",
-                option3: "dot .",
-                option4: "comma ,",
-                answer: "2"
-              },
-              {
-
-                question: "Object properties are separated by?",
-                option1: "comma ,",
-                option2: "dot .",
-                option3: "colon :",
-                option4: "semicolon ;",
-                answer: "1"
-              },
-              ]
-            },
-          ]
-        },
-
-        {
-          name: 'PWA',
-          subQuiz: [
-            {
-              name: 'Quiz 1', questions: '100', time: '120',
+              name: 'Quiz 2', questions: '6', time: '40',
               qArr: [
+                {
+
+                  question: "Which creates random number?",
+                  option1: "Math.floor()",
+                  option2: "Math.ceil()",
+                  option3: "Math.random()",
+                  option4: "Math.high",
+                  answer: "3"
+                },
+                {
+
+                  question: "What does array returns?",
+                  option1: "function",
+                  option2: "object",
+                  option3: "index number",
+                  option4: "data type",
+                  answer: "2"
+                },
+                {
+
+                  question: "Object property name & value are separated by?",
+                  option1: "semicolon ;",
+                  option2: "colon :",
+                  option3: "dot .",
+                  option4: "comma ,",
+                  answer: "2"
+                },
+                {
+
+                  question: "Object properties are separated by?",
+                  option1: "comma ,",
+                  option2: "dot .",
+                  option3: "colon :",
+                  option4: "semicolon ;",
+                  answer: "1"
+                },
                 {
 
                   question: "What is the correct syntax for object initialization?",
@@ -121,9 +239,10 @@ class App extends Component {
                   answer: "3"
                 },
               ]
-            }
+            },
           ]
         },
+
         // {
         //   name: 'React',
         //   subQuiz: [{ name: 'Quiz 1', questions: '30', time: '60' }, { name: 'Quiz 2', questions: '25', time: '50' }]
@@ -140,7 +259,19 @@ class App extends Component {
 
       qstnNo: 0,
 
+      validFlag: false,
+      userFlag: false,
+ 
+      userName: '',
+      userEmail: '',
+      userPass: '',
+      loginEmail: '',
+      loginPass: '',
     };
+
+    this.updateText = this.updateText.bind(this)
+    this.showLogin = this.showLogin.bind(this)
+    this.checkValidation = this.checkValidation.bind(this)
 
     this.joinQuiz = this.joinQuiz.bind(this);
     this.startQuiz = this.startQuiz.bind(this);
@@ -148,12 +279,75 @@ class App extends Component {
     this.showList = this.showList.bind(this);
   }
 
+  async updateText(e) {
+    console.log(e.target.name)
+    console.log(e.target.value)
+    const name = e.target.name;
+    const value = e.target.value;
+
+    if (name.match('name')) {
+      await this.setState({
+        userName: value
+      })
+      localStorage.setItem('userName', this.state.userName) 
+    }
+    else if (name.match('userEmail')) {
+      await this.setState({
+        userEmail: value
+      })
+      localStorage.setItem('userEmail', this.state.userEmail)
+    }
+    else if (name.match('userPassword')) {
+      await this.setState({
+        userPass: value
+      })
+      localStorage.setItem('userPass', this.state.userPass)
+    }
+    else if (name.match('loginEmail')) {
+    await this.setState({
+        loginEmail: value
+      })
+    }
+    else if (name.match('loginPass')) {
+    await this.setState({
+        loginPass: value
+      })
+    }
+  }
+
+  showLogin() {
+    this.setState({
+      userFlag: true
+    })
+  }
+
+  // hideLogin() {
+  //   this.setState({
+  //     userFlag: false
+  //   })
+  // }
+ 
+  async checkValidation() {
+    const { loginEmail, loginPass } = this.state
+    if ((loginEmail.match(localStorage.getItem('userEmail'))) && (loginPass.match(localStorage.getItem('userPass')))) {
+      await this.setState({
+        validFlag: true
+      })
+    }
+    console.log("Email is Valid :", this.state.validFlag)
+  }
+
+
   joinQuiz(quizIndex) {
     const { quizzes } = this.state;
     this.setState({
       quiz: quizzes[quizIndex],
       quizIndex: quizIndex,
     });
+  }
+
+  showList() {
+    this.setState({ quiz: null });
   }
 
   startQuiz(subQuizIndex) {
@@ -172,18 +366,17 @@ class App extends Component {
     });
   }
 
-  showList() {
-    this.setState({ quiz: null });
-  }
 
   render() {
-    const { quizzes, quiz, started, qstnNo } = this.state;
+    const { name, userFlag, userEmail, userPass, loginEmail, loginPass, validFlag, quizzes, quiz, started, qstnNo } = this.state;
 
     return (
       <div>
-        {!quiz && !started && <QuizList list={quizzes} onPress={this.joinQuiz} />}
-        {quiz && !started && <QuizInfo quiz={quiz} onPress={this.startQuiz} onBack={this.showList} />}
-        {started && <StartQuiz qArr={started} qstnNo={qstnNo} onPress={this.nextQstn} />}
+        {!userFlag && <Signup updateText={this.updateText} showLogin={this.showLogin} />}
+        {userFlag && !validFlag && <Login validation={this.checkValidation} updateText={this.updateText} />}
+        {userFlag && validFlag && !quiz && !started && <QuizList list={quizzes} onPress={this.joinQuiz} />}
+        {userFlag && validFlag && quiz && !started && <QuizInfo quiz={quiz} onPress={this.startQuiz} onBack={this.showList} />}
+        {userFlag && validFlag && started && <StartQuiz qArr={started} qstnNo={qstnNo} onPress={this.nextQstn} />}
       </div>
     )
   }
