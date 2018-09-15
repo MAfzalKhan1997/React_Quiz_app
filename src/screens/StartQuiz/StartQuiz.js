@@ -26,44 +26,31 @@ class QuizList extends Component {
     else {
       if ((qstnNo === qArr.length - 1) && (qArr[qstnNo].answer.match(radio.value))) {
 
-        console.log("both**", qArr[qstnNo].answer)
-
-
         this.setState({
           correct: correct + 1,
-          percent: correct * (100 / qArr.length)
+          percent: (correct + 1) * (100 / qArr.length)
         })
+      }
 
+      if ((qstnNo === qArr.length - 1) && !(qArr[qstnNo].answer.match(radio.value))) {
+
+        this.setState({
+          percent: (correct) * (100 / qArr.length)
+        })
       }
 
       if (!(qstnNo === qArr.length - 1) && (qArr[qstnNo].answer.match(radio.value))) {
 
-        console.log("lengthnot**", qArr[qstnNo].answer)
-
-
         this.setState({
-          correct: correct + 1, 
+          correct: correct + 1,
         })
 
+        onPress(qstnNo);
       }
-      // if (qArr[qstnNo].answer.match(radio.value)) {
-
-      //   console.log("answer**", qArr[qstnNo].answer)
-
-      //   this.setState({
-      //     correct: correct + 1
-      //   })
-      // }
-
-
       else {
         onPress(qstnNo);
       }
-
     }
-
-
-
   }
 
   render() {
