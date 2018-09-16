@@ -6,11 +6,18 @@ class QuizList extends Component {
 
     this.state = {
 
+      sec: 0,
+      min: 4,
+      timer:true,
+
       correct: 0,
-      percent: false
+      percent: false,
+
 
     }
 
+    // this.timer = this.timer.bind(this);
+        this.quizTimer = this.quizTimer.bind(this);
   }
 
   updating(qArr, qstnNo) {
@@ -53,9 +60,39 @@ class QuizList extends Component {
     }
   }
 
+  quizTimer() {
+    const { sec, min } = this.state;
+    
+    this.setState({
+      sec: sec-1,
+     })
+
+    if ((sec === 0) && (min === 0)) {
+      this.setState({
+        timer: false,
+        sec:0,
+        min:0,
+       })
+    }
+    else
+    if( (sec <= 0) && !(min === 0) ){
+
+      this.setState({
+        sec: 59,
+        min: min - 1,
+      })
+    }
+
+  }
+
+  timer(){  
+    // alert("timer");
+    this.time = setInterval(this.quizTimer, 1000);
+  }
+
   render() {
     const { qArr, qstnNo } = this.props;
-    const { correct, percent } = this.state;
+    const { correct, percent, min, sec, timer } = this.state;
     return (
       <div className="App">
 
@@ -68,7 +105,8 @@ class QuizList extends Component {
           </div>
           :
           <div>
-
+            {timer === true && this.timer()}
+            <h4>{min}:{sec}</h4>
             <h3>{qstnNo + 1}) {qArr[qstnNo].question}</h3>
 
             <input type="radio" name="option" value="1" />{qArr[qstnNo].option1}<br />

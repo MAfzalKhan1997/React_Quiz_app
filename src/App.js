@@ -367,8 +367,9 @@ class App extends Component {
   }
 
 
+
   render() {
-    const { name, userFlag, userEmail, userPass, loginEmail, loginPass, validFlag, quizzes, quiz, started, qstnNo } = this.state;
+    const { userFlag, validFlag, quizzes, quiz, started, qstnNo } = this.state;
 
     return (
       <div>
