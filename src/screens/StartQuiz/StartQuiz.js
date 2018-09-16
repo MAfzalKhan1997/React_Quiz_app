@@ -6,22 +6,20 @@ class QuizList extends Component {
 
     this.state = {
 
-      sec: 0,
-      min: 4,
-      timer:true,
-
+      sec: 10,
+      min: 0,
+ 
       correct: 0,
       percent: false,
 
-
     }
 
-    // this.timer = this.timer.bind(this);
-        this.quizTimer = this.quizTimer.bind(this);
+    this.quizTimer = this.quizTimer.bind(this);
+    this.timer()
   }
 
-  updating(qArr, qstnNo) {
-    const { onPress } = this.props;
+  async updating() {
+    const { qArr, qstnNo, onPress } = this.props;
     const { correct, percent } = this.state;
 
     var radio = document.querySelector("input[name='option']:checked");
@@ -33,22 +31,23 @@ class QuizList extends Component {
     else {
       if ((qstnNo === qArr.length - 1) && (qArr[qstnNo].answer.match(radio.value))) {
 
-        this.setState({
+        await this.setState({
           correct: correct + 1,
-          percent: (correct + 1) * (100 / qArr.length)
         })
+
+        this.percentCal();
+
       }
 
       if ((qstnNo === qArr.length - 1) && !(qArr[qstnNo].answer.match(radio.value))) {
 
-        this.setState({
-          percent: (correct) * (100 / qArr.length)
-        })
+        this.percentCal();
+
       }
 
       if (!(qstnNo === qArr.length - 1) && (qArr[qstnNo].answer.match(radio.value))) {
 
-        this.setState({
+        await this.setState({
           correct: correct + 1,
         })
 
@@ -60,33 +59,42 @@ class QuizList extends Component {
     }
   }
 
+  percentCal() {
+    const { qArr } = this.props;
+    const { correct, percent } = this.state;
+
+    this.setState({
+      percent: (correct) * (100 / qArr.length)
+    })
+  }
+
   quizTimer() {
     const { sec, min } = this.state;
-    
-    this.setState({
-      sec: sec-1,
-     })
 
     if ((sec === 0) && (min === 0)) {
-      this.setState({
-        timer: false,
-        sec:0,
-        min:0,
-       })
-    }
-    else
-    if( (sec <= 0) && !(min === 0) ){
 
-      this.setState({
-        sec: 59,
-        min: min - 1,
-      })
+      clearInterval(this.time);
+      this.percentCal();
     }
+
+    else
+      if ((sec <= 0) && !(min === 0)) {
+
+        this.setState({
+          sec: 59,
+          min: min - 1,
+        })
+      }
+
+      else {
+        this.setState({
+          sec: sec - 1,
+        })
+      }
 
   }
 
-  timer(){  
-    // alert("timer");
+  timer() {
     this.time = setInterval(this.quizTimer, 1000);
   }
 
@@ -105,7 +113,7 @@ class QuizList extends Component {
           </div>
           :
           <div>
-            {timer === true && this.timer()}
+            {/* {timer === true && this.timer()} */}
             <h4>{min}:{sec}</h4>
             <h3>{qstnNo + 1}) {qArr[qstnNo].question}</h3>
 
@@ -114,7 +122,7 @@ class QuizList extends Component {
             <input type="radio" name="option" value="3" />{qArr[qstnNo].option3}<br />
             <input type="radio" name="option" value="4" />{qArr[qstnNo].option4}<br />
 
-            <button onClick={this.updating.bind(this, qArr, qstnNo)}>Next</button>
+            <button onClick={this.updating.bind(this)}>Next</button>
 
           </div>
 
