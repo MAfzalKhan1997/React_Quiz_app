@@ -351,8 +351,8 @@ class App extends Component {
   }
 
   startQuiz(subQuizIndex) {
-    const { quizzes, quizIndex, qstnNo } = this.state;
-    // console.log(subQuizIndex)
+    const { quizzes, quizIndex, qstnNo } = this.state; 
+    
     this.setState({
       started: quizzes[quizIndex].subQuiz[subQuizIndex].qArr,
       subQuizIndex: subQuizIndex
