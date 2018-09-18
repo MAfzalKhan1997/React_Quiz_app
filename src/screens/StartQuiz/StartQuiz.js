@@ -8,9 +8,9 @@ class QuizList extends Component {
 
       sec: 10,
       min: 0,
- 
+
       correct: 0,
-      score: false,
+      scored: false,
 
     }
 
@@ -19,7 +19,7 @@ class QuizList extends Component {
   }
 
   async updating() {
-    const { qArr, qstnNo, onPress } = this.props;
+    const { started, qstnNo, onPress } = this.props;
     const { correct } = this.state;
 
     var radio = document.querySelector("input[name='option']:checked");
@@ -29,53 +29,65 @@ class QuizList extends Component {
     }
 
     else {
-      if ((qstnNo === qArr.length - 1) && (qArr[qstnNo].answer.match(radio.value))) {
+       if ((qstnNo === started.qArr.length - 1) && (started.qArr[qstnNo].answer.match(radio.value))) {
 
         await this.setState({
           correct: correct + 1,
+          min: 0,
+          sec: 0
         })
 
-        this.scoreCal();
+        // this.scoreCal();
 
       }
+      else
+        if ((qstnNo === started.qArr.length - 1) && !(started.qArr[qstnNo].answer.match(radio.value))) {
 
-      if ((qstnNo === qArr.length - 1) && !(qArr[qstnNo].answer.match(radio.value))) {
+          // this.scoreCal();
+          await this.setState({
+            min: 0,
+            sec: 0
+          })
 
-        this.scoreCal();
+        }
+        else
+          if (!(qstnNo === started.qArr.length - 1) && (started.qArr[qstnNo].answer.match(radio.value))) {
 
-      }
+            await this.setState({
+              correct: correct + 1,
+            })
 
-      if (!(qstnNo === qArr.length - 1) && (qArr[qstnNo].answer.match(radio.value))) {
-
-        await this.setState({
-          correct: correct + 1,
-        })
-
-        onPress(qstnNo);
-      }
-      else {
-        onPress(qstnNo);
-      }
+            onPress(qstnNo);
+          }
+          else {
+            onPress(qstnNo);
+          }
     }
   }
 
-async scoreCal() {
-    const { qArr } = this.props;
-    const { correct,score } = this.state;
+  async scoreCal() {
+    const { started } = this.props;
+    const { correct, scored } = this.state;
 
-  await this.setState({
-      score: ((correct) * (100 / qArr.length)).toFixed(2)
+    // clearInterval(this.time);
+
+    await this.setState({
+      scored: ((correct) * (100 / started.qArr.length)).toFixed(2)
     })
 
-    localStorage.setItem("score", JSON.stringify(score))
+
+    started.score = scored;
+    { console.log(started.score) }
+    // clearInterval(this.time);
+    // localStorage.setItem("score", JSON.stringify(score))
   }
 
   quizTimer() {
     const { sec, min } = this.state;
-
+    // console.log("timer")
     if ((sec === 0) && (min === 0)) {
 
-      clearInterval(this.time);
+
       this.scoreCal();
     }
 
@@ -101,31 +113,31 @@ async scoreCal() {
   }
 
   render() {
-    const { qArr, qstnNo , back, quizName, subQuizName } = this.props;
-    const { correct, score, min, sec } = this.state;
+    const { started, qstnNo, back, quizName, subQuizName } = this.props;
+    const { correct, scored, min, sec } = this.state;
     return (
       <div className="App">
 
-        {score !== false ?
+        {scored !== false ?
 
           <div>
             <h1>{quizName}</h1>
             <h2>{subQuizName}</h2>
-            <p>Total Questions: {qArr.length}</p>
+            <p>Total Questions: {started.qArr.length}</p>
             <p>Correct: {correct}</p>
-            <p>Percentage: {score} %</p>
-            <button onClick={() => back() }>Back</button>
+            <p>Percentage: {scored} %</p>
+            <button onClick={() => back()}>Back</button>
           </div>
           :
           <div>
- 
-            <h4>{min}:{sec}</h4>
-            <h3>{qstnNo + 1}) {qArr[qstnNo].question}</h3>
 
-            <input type="radio" name="option" value="1" />{qArr[qstnNo].option1}<br />
-            <input type="radio" name="option" value="2" />{qArr[qstnNo].option2}<br />
-            <input type="radio" name="option" value="3" />{qArr[qstnNo].option3}<br />
-            <input type="radio" name="option" value="4" />{qArr[qstnNo].option4}<br />
+            <h4>{min}:{sec}</h4>
+            <h3>{qstnNo + 1}) {started.qArr[qstnNo].question}</h3>
+
+            <input type="radio" name="option" value="1" />{started.qArr[qstnNo].option1}<br />
+            <input type="radio" name="option" value="2" />{started.qArr[qstnNo].option2}<br />
+            <input type="radio" name="option" value="3" />{started.qArr[qstnNo].option3}<br />
+            <input type="radio" name="option" value="4" />{started.qArr[qstnNo].option4}<br />
 
             <button onClick={this.updating.bind(this)}>Next</button>
 

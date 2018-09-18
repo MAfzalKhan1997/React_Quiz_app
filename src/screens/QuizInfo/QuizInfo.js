@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 class QuizInfo extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
   }
 
   render() {
@@ -15,10 +15,15 @@ class QuizInfo extends Component {
           {quiz.subQuiz.map((subQuiz, index) => {
             return <li>
               {<h3>{subQuiz.name}</h3>}
+              {subQuiz.score ? <p>{subQuiz.score}</p>
+              : 
+              <div>
               <p>Total Questions: {subQuiz.questions}</p>
               <p>Total Time: {subQuiz.time}</p>
               <button onClick={() => onPress(index)}>Start Quiz</button>
               <button onClick={onBack}>Back</button>
+              </div>
+            }
             </li>
           })}
         </ul>

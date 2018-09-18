@@ -17,7 +17,7 @@ class App extends Component {
           name: 'HTML',
           subQuiz: [
             {
-              name: 'Quiz 1', questions: '3', time: '60',
+              name: 'Quiz 1', questions: '3', time: '60', score : false,
               qArr: [
                 {
                   question: "what is use for image insertion",
@@ -48,7 +48,7 @@ class App extends Component {
               ]
             },
             {
-              name: 'Quiz 2', questions: '3', time: '40',
+              name: 'Quiz 2', questions: '3', time: '40', score : false,
               qArr: [
                 {
                   question: "html use for",
@@ -83,7 +83,7 @@ class App extends Component {
           name: 'CSS',
           subQuiz: [
             {
-              name: 'Quiz 1', questions: '6', time: '60',
+              name: 'Quiz 1', questions: '6', time: '60', score : false,
               qArr: [
                 {
                   question: "Css stands for?",
@@ -142,7 +142,7 @@ class App extends Component {
           name: 'JavaScript',
           subQuiz: [
             {
-              name: 'Quiz 1', questions: '4', time: '60',
+              name: 'Quiz 1', questions: '4', time: '60', score : false,
               qArr: [
                 {
                   question: "How to create alert box?",
@@ -182,7 +182,7 @@ class App extends Component {
               ]
             },
             {
-              name: 'Quiz 2', questions: '6', time: '40',
+              name: 'Quiz 2', questions: '6', time: '40', score : false,
               qArr: [
                 {
 
@@ -266,9 +266,10 @@ class App extends Component {
     this.checkValidation = this.checkValidation.bind(this)
 
     this.joinQuiz = this.joinQuiz.bind(this);
+    this.showList = this.showList.bind(this);
     this.startQuiz = this.startQuiz.bind(this);
     this.nextQstn = this.nextQstn.bind(this);
-    this.showList = this.showList.bind(this);
+    this.back = this.back.bind(this);
   }
 
   async updateText(e) {
@@ -347,7 +348,7 @@ class App extends Component {
     const { quizzes, quizIndex } = this.state; 
 
     this.setState({
-      started: quizzes[quizIndex].subQuiz[subQuizIndex].qArr,
+      started: quizzes[quizIndex].subQuiz[subQuizIndex] ,
       subQuizIndex: subQuizIndex,
       subQuizName: quizzes[quizIndex].subQuiz[subQuizIndex].name,
     });
@@ -360,7 +361,9 @@ class App extends Component {
     });
   }
 
-
+  back() {
+    this.setState({ started: null });
+  }
 
   render() {
     const { userFlag, validFlag, quizzes, quiz, started, qstnNo, quizName, subQuizName } = this.state;
@@ -371,7 +374,7 @@ class App extends Component {
         {userFlag && !validFlag && <Login validation={this.checkValidation} updateText={this.updateText} />}
         {userFlag && validFlag && !quiz && !started && <QuizList list={quizzes} onPress={this.joinQuiz} />}
         {userFlag && validFlag && quiz && !started && <QuizInfo quiz={quiz} onPress={this.startQuiz} onBack={this.showList} />}
-        {userFlag && validFlag && started && <StartQuiz quizName={quizName} subQuizName={subQuizName} qArr={started} qstnNo={qstnNo} onPress={this.nextQstn} />}
+        {userFlag && validFlag && started && <StartQuiz quizName={quizName} subQuizName={subQuizName} started={started} qstnNo={qstnNo} onPress={this.nextQstn} back={this.back}/>}
       </div>
     )
   }
