@@ -242,15 +242,7 @@ class App extends Component {
             },
           ]
         },
-
-        // {
-        //   name: 'React',
-        //   subQuiz: [{ name: 'Quiz 1', questions: '30', time: '60' }, { name: 'Quiz 2', questions: '25', time: '50' }]
-        // },
-        // {
-        //   name: 'JavaScript',
-        //   subQuiz: [{ name: 'Quiz 1', questions: '30', time: '40' }, { name: 'Quiz 2', questions: '35', time: '60' }]
-        // }
+  
       ],
 
 
@@ -351,16 +343,16 @@ class App extends Component {
   }
 
   startQuiz(subQuizIndex) {
-    const { quizzes, quizIndex, qstnNo } = this.state; 
-    
+    const { quizzes, quizIndex } = this.state; 
+
     this.setState({
       started: quizzes[quizIndex].subQuiz[subQuizIndex].qArr,
       subQuizIndex: subQuizIndex
     });
   }
 
-  nextQstn(nextQstnNo) {
-    const { qstnNo } = this.state;
+  nextQstn(nextQstnNo) { 
+
     this.setState({
       qstnNo: nextQstnNo + 1
     });
