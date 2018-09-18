@@ -10,7 +10,7 @@ class QuizList extends Component {
       min: 0,
  
       correct: 0,
-      percent: false,
+      score: false,
 
     }
 
@@ -35,13 +35,13 @@ class QuizList extends Component {
           correct: correct + 1,
         })
 
-        this.percentCal();
+        this.scoreCal();
 
       }
 
       if ((qstnNo === qArr.length - 1) && !(qArr[qstnNo].answer.match(radio.value))) {
 
-        this.percentCal();
+        this.scoreCal();
 
       }
 
@@ -59,13 +59,15 @@ class QuizList extends Component {
     }
   }
 
-  percentCal() {
+async scoreCal() {
     const { qArr } = this.props;
-    const { correct } = this.state;
+    const { correct,score } = this.state;
 
-    this.setState({
-      percent: (correct) * (100 / qArr.length)
+  await this.setState({
+      score: ((correct) * (100 / qArr.length)).toFixed(2)
     })
+
+    localStorage.setItem("score", JSON.stringify(score))
   }
 
   quizTimer() {
@@ -74,7 +76,7 @@ class QuizList extends Component {
     if ((sec === 0) && (min === 0)) {
 
       clearInterval(this.time);
-      this.percentCal();
+      this.scoreCal();
     }
 
     else
@@ -99,17 +101,20 @@ class QuizList extends Component {
   }
 
   render() {
-    const { qArr, qstnNo } = this.props;
-    const { correct, percent, min, sec } = this.state;
+    const { qArr, qstnNo , back, quizName, subQuizName } = this.props;
+    const { correct, score, min, sec } = this.state;
     return (
       <div className="App">
 
-        {percent !== false ?
+        {score !== false ?
 
           <div>
+            <h1>{quizName}</h1>
+            <h2>{subQuizName}</h2>
             <p>Total Questions: {qArr.length}</p>
             <p>Correct: {correct}</p>
-            <p>Percentage: {percent} %</p>
+            <p>Percentage: {score} %</p>
+            <button onClick={() => back() }>Back</button>
           </div>
           :
           <div>

@@ -335,6 +335,7 @@ class App extends Component {
     this.setState({
       quiz: quizzes[quizIndex],
       quizIndex: quizIndex,
+      quizName: quizzes[quizIndex].name,
     });
   }
 
@@ -347,7 +348,8 @@ class App extends Component {
 
     this.setState({
       started: quizzes[quizIndex].subQuiz[subQuizIndex].qArr,
-      subQuizIndex: subQuizIndex
+      subQuizIndex: subQuizIndex,
+      subQuizName: quizzes[quizIndex].subQuiz[subQuizIndex].name,
     });
   }
 
@@ -361,7 +363,7 @@ class App extends Component {
 
 
   render() {
-    const { userFlag, validFlag, quizzes, quiz, started, qstnNo } = this.state;
+    const { userFlag, validFlag, quizzes, quiz, started, qstnNo, quizName, subQuizName } = this.state;
 
     return (
       <div>
@@ -369,7 +371,7 @@ class App extends Component {
         {userFlag && !validFlag && <Login validation={this.checkValidation} updateText={this.updateText} />}
         {userFlag && validFlag && !quiz && !started && <QuizList list={quizzes} onPress={this.joinQuiz} />}
         {userFlag && validFlag && quiz && !started && <QuizInfo quiz={quiz} onPress={this.startQuiz} onBack={this.showList} />}
-        {userFlag && validFlag && started && <StartQuiz qArr={started} qstnNo={qstnNo} onPress={this.nextQstn} />}
+        {userFlag && validFlag && started && <StartQuiz quizName={quizName} subQuizName={subQuizName} qArr={started} qstnNo={qstnNo} onPress={this.nextQstn} />}
       </div>
     )
   }
