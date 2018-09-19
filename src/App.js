@@ -259,7 +259,12 @@ class App extends Component {
       userPass: '',
       loginEmail: '',
       loginPass: '',
+
+      user: localStorage.getItem("user"),
+
     };
+
+    // this.userAvailable = this.userAvailable.bind(this)
 
     this.updateText = this.updateText.bind(this)
     this.showLogin = this.showLogin.bind(this)
@@ -323,8 +328,8 @@ class App extends Component {
       await this.setState({
         validFlag: true
       })
+      localStorage.setItem('user', true) 
     }
-    localStorage.setItem('user', true) 
     console.log("Email is Valid :", this.state.validFlag)
   }
 
@@ -381,11 +386,25 @@ async logout() {
     });
   }
 
-  render() {
-    const { userFlag, validFlag, quizzes, quiz, started, qstnNo, quizName, subQuizName } = this.state;
+async  userAvailable(){
 
+await  this.setState({ 
+      userFlag: true,
+      validFlag:true, 
+    });
+    // alert()
+  }
+
+  render() {
+    const { userFlag, validFlag, quizzes, quiz, started, qstnNo, quizName, subQuizName, user } = this.state;
+    // const user = localStorage.getItem("user") ;
+    // console.log(user)
     return (
       <div>
+        {console.log(user)}
+        {/* {console.log(userFlag)} */}
+        {/* {console.log(validFlag)} */}
+        {user && this.userAvailable()}
         {!userFlag && <Signup updateText={this.updateText} showLogin={this.showLogin} />}
         {userFlag && !validFlag && <Login validation={this.checkValidation} updateText={this.updateText} />}
         {userFlag && validFlag && !quiz && !started && <QuizList list={quizzes} onPress={this.joinQuiz} logout={this.logout} />}
