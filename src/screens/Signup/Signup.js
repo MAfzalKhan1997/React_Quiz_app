@@ -5,8 +5,7 @@ class Signup extends Component {
         super(props);
     }
 
-    render() {
-        console.log(this.props)
+    render() {  
         const { updateText, showLogin } = this.props;
         return (
             <div>

@@ -36,11 +36,11 @@ class QuizList extends Component {
           min: 0,
           sec: 0
         })
-  
+
       }
       else
         if ((qstnNo === started.qArr.length - 1) && !(started.qArr[qstnNo].answer.match(radio.value))) {
- 
+
           await this.setState({
             min: 0,
             sec: 0
@@ -64,13 +64,13 @@ class QuizList extends Component {
 
   async scoreCal() {
     const { started } = this.props;
-    const { correct, scored } = this.state;
- 
+    const { correct } = this.state;
+
     await this.setState({
       scored: ((correct) * (100 / started.qArr.length)).toFixed(2)
     })
 
-    this.saveScore();   
+    this.saveScore();
     // localStorage.setItem("score", JSON.stringify(score))
   }
 
@@ -79,13 +79,13 @@ class QuizList extends Component {
     const { scored } = this.state;
 
     started.score = scored;
-    console.log("score",started.score)
+    console.log("score", started.score)
 
   }
 
   quizTimer() {
     const { sec, min } = this.state;
-     
+
     if ((sec === 0) && (min === 0)) {
 
       clearInterval(this.time);
@@ -116,14 +116,16 @@ class QuizList extends Component {
   }
 
   render() {
-    const { started, qstnNo, back, quizName, subQuizName } = this.props;
+    const { started, qstnNo, back, quizName, subQuizName, logout } = this.props;
     const { correct, scored, min, sec } = this.state;
     return (
       <div className="App">
 
+
         {scored !== false ?
 
           <div>
+            <button onClick={() => logout()}>Log-Out</button>
             <h1>{quizName}</h1>
             <h2>{subQuizName}</h2>
             <p>Total Questions: {started.qArr.length}</p>

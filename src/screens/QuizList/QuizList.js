@@ -6,8 +6,10 @@ class QuizList extends Component {
   }
 
   render() {
-    const { list, onPress } = this.props;
+    const { list, onPress, logout } = this.props;
     return (
+      <div>
+      <button onClick={() => logout() }>Log-Out</button>
       <ul>
         {list.map((quiz, index) => {
           return <li>
@@ -18,6 +20,7 @@ class QuizList extends Component {
         )}
 
       </ul>
+      </div>
     )
   }
 

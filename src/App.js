@@ -270,6 +270,8 @@ class App extends Component {
     this.startQuiz = this.startQuiz.bind(this);
     this.nextQstn = this.nextQstn.bind(this);
     this.back = this.back.bind(this);
+
+    this.logout = this.logout.bind(this);
   }
 
   async updateText(e) {
@@ -314,11 +316,6 @@ class App extends Component {
     })
   }
 
-  // hideLogin() {
-  //   this.setState({
-  //     userFlag: false
-  //   })
-  // }
  
   async checkValidation() {
     const { loginEmail, loginPass } = this.state
@@ -327,9 +324,25 @@ class App extends Component {
         validFlag: true
       })
     }
+    localStorage.setItem('user', true) 
     console.log("Email is Valid :", this.state.validFlag)
   }
 
+
+async logout() {
+  this.setState({
+    // quizIndex: null,
+    // subQuizIndex: null,
+    userFlag: false,
+    validFlag: false,
+    loginEmail:'',
+    loginPass:'' ,
+    quiz:null,
+    started:null, 
+    qstnNo: 0, 
+  })
+  localStorage.setItem('user', false) 
+}
 
   joinQuiz(quizIndex) {
     const { quizzes } = this.state;
@@ -375,9 +388,9 @@ class App extends Component {
       <div>
         {!userFlag && <Signup updateText={this.updateText} showLogin={this.showLogin} />}
         {userFlag && !validFlag && <Login validation={this.checkValidation} updateText={this.updateText} />}
-        {userFlag && validFlag && !quiz && !started && <QuizList list={quizzes} onPress={this.joinQuiz} />}
-        {userFlag && validFlag && quiz && !started && <QuizInfo quiz={quiz} onPress={this.startQuiz} onBack={this.showList} />}
-        {userFlag && validFlag && started && <StartQuiz quizName={quizName} subQuizName={subQuizName} started={started} qstnNo={qstnNo} onPress={this.nextQstn} back={this.back}/>}
+        {userFlag && validFlag && !quiz && !started && <QuizList list={quizzes} onPress={this.joinQuiz} logout={this.logout} />}
+        {userFlag && validFlag && quiz && !started && <QuizInfo quiz={quiz} onPress={this.startQuiz} onBack={this.showList} logout={this.logout} />}
+        {userFlag && validFlag && started && <StartQuiz quizName={quizName} subQuizName={subQuizName} started={started} qstnNo={qstnNo} onPress={this.nextQstn} back={this.back} logout={this.logout}/>}
       </div>
     )
   }

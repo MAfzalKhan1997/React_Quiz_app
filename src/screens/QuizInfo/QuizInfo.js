@@ -6,16 +6,17 @@ class QuizInfo extends Component {
   }
 
   render() {
-    const { quiz, onBack, onPress } = this.props;
+    const { quiz, onBack, onPress, logout } = this.props;
     return (
       <div>
+        <button onClick={() => logout() }>Log-Out</button>
         {console.log(quiz)}
         <h1>{quiz.name}</h1>
         <ul>
           {quiz.subQuiz.map((subQuiz, index) => {
             return <li>
               {<h3>{subQuiz.name}</h3>}
-              {subQuiz.score ? <p>{subQuiz.score}</p>
+              {subQuiz.score ? <p>Percentage:{subQuiz.score} %</p>
               : 
               <div>
               <p>Total Questions: {subQuiz.questions}</p>
