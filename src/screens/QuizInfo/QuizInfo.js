@@ -21,13 +21,13 @@ class QuizInfo extends Component {
               <p>Total Questions: {subQuiz.questions}</p>
               <p>Total Time: {subQuiz.time}</p>
               <button onClick={() => onPress(index)}>Start Quiz</button>
-              <button onClick={onBack}>Back</button>
+              
               </div>
             }
             </li>
           })}
         </ul>
-
+        <button onClick={onBack}>Back</button>
       </div>
     )
   }

@@ -29,21 +29,18 @@ class QuizList extends Component {
     }
 
     else {
-       if ((qstnNo === started.qArr.length - 1) && (started.qArr[qstnNo].answer.match(radio.value))) {
+      if ((qstnNo === started.qArr.length - 1) && (started.qArr[qstnNo].answer.match(radio.value))) {
 
         await this.setState({
           correct: correct + 1,
           min: 0,
           sec: 0
         })
-
-        // this.scoreCal();
-
+  
       }
       else
         if ((qstnNo === started.qArr.length - 1) && !(started.qArr[qstnNo].answer.match(radio.value))) {
-
-          // this.scoreCal();
+ 
           await this.setState({
             min: 0,
             sec: 0
@@ -68,27 +65,33 @@ class QuizList extends Component {
   async scoreCal() {
     const { started } = this.props;
     const { correct, scored } = this.state;
-
-    // clearInterval(this.time);
-
+ 
     await this.setState({
       scored: ((correct) * (100 / started.qArr.length)).toFixed(2)
     })
 
+    this.saveScore();   
+    // localStorage.setItem("score", JSON.stringify(score))
+  }
+
+  async saveScore() {
+    const { started } = this.props;
+    const { scored } = this.state;
 
     started.score = scored;
-    { console.log(started.score) }
-    // clearInterval(this.time);
-    // localStorage.setItem("score", JSON.stringify(score))
+    console.log("score",started.score)
+
   }
 
   quizTimer() {
     const { sec, min } = this.state;
-    // console.log("timer")
+     
     if ((sec === 0) && (min === 0)) {
 
+      clearInterval(this.time);
 
       this.scoreCal();
+
     }
 
     else

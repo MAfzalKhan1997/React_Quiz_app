@@ -362,7 +362,10 @@ class App extends Component {
   }
 
   back() {
-    this.setState({ started: null });
+    this.setState({ 
+      started: null,
+      qstnNo:0, 
+    });
   }
 
   render() {
