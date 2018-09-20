@@ -68,21 +68,20 @@ class QuizList extends Component {
 
     await this.setState({
       scored: ((correct) * (100 / started.qArr.length)).toFixed(2),
-      date:new Date() ,
+      date: new Date(),
     })
 
     this.saveScore();
     // localStorage.setItem("score", JSON.stringify(score))
   }
 
-  async saveScore() {
+  saveScore() {
     const { started } = this.props;
     const { scored, date } = this.state;
 
     started.score = scored;
     started.attemptDate = date.toLocaleDateString();
     started.attemptTime = date.toLocaleTimeString();
-    console.log("score", started.score)
 
   }
 
@@ -127,7 +126,7 @@ class QuizList extends Component {
 
         {scored !== false ?
 
-          <div> 
+          <div>
             <button onClick={() => logout()}>Log-Out</button>
             <h1>{quizName}</h1>
             <h2>{subQuizName}</h2>

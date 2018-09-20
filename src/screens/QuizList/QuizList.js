@@ -9,17 +9,17 @@ class QuizList extends Component {
     const { list, onPress, logout } = this.props;
     return (
       <div>
-      <button onClick={() => logout() }>Log-Out</button>
-      <ul>
-        {list.map((quiz, index) => {
-          return <li>
-            {quiz.name}
-            <button onClick={() => onPress(index)}>Join</button>
-          </li>
-        }
-        )}
+        <button onClick={() => logout()}>Log-Out</button>
+        <ul>
+          {list.map((quiz, index) => {
+            return <li>
+              {quiz.name}
+              <button onClick={() => onPress(index)}>Join</button>
+            </li>
+          }
+          )}
 
-      </ul>
+        </ul>
       </div>
     )
   }
