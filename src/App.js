@@ -318,7 +318,9 @@ class App extends Component {
 
   showSignup(){
     this.setState({
-      userFlag: false
+      userFlag: false,
+      loginEmail:'',
+      loginPass:'' 
     })
   }
 

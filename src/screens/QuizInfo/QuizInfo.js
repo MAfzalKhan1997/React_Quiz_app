@@ -16,7 +16,8 @@ class QuizInfo extends Component {
           {quiz.subQuiz.map((subQuiz, index) => {
             return <li>
               {<h3>{subQuiz.name}</h3>}
-              {subQuiz.score ? <p>Percentage:{subQuiz.score} %</p>
+              {subQuiz.score ? <p>Percentage: {subQuiz.score} %<br/>Attempted Date: {subQuiz.attemptDate}
+              <br/>Attempted Time: {subQuiz.attemptTime}</p>
               : 
               <div>
               <p>Total Questions: {subQuiz.questions}</p>
