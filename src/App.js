@@ -252,7 +252,7 @@ class App extends Component {
       qstnNo: 0,
 
       validFlag: false,
-      userFlag: false,
+      userFlag: true,
  
       userName: '',
       userEmail: '',
@@ -267,6 +267,7 @@ class App extends Component {
     // this.userAvailable = this.userAvailable.bind(this)
 
     this.updateText = this.updateText.bind(this)
+    this.showSignup = this.showSignup.bind(this)
     this.showLogin = this.showLogin.bind(this)
     this.checkValidation = this.checkValidation.bind(this)
 
@@ -315,6 +316,12 @@ class App extends Component {
     }
   }
 
+  showSignup(){
+    this.setState({
+      userFlag: false
+    })
+  }
+
   showLogin() {
     this.setState({
       userFlag: true
@@ -329,18 +336,18 @@ class App extends Component {
         validFlag: true,
         user:true,
       })
-      localStorage.setItem('user', true) 
+      localStorage.setItem('user', 'true') 
     }
     console.log("Email is Valid :", this.state.validFlag)
   }
 
 
-async logout() {
-await  this.setState({
+  logout() {
+ this.setState({
     // quizIndex: null,
     // subQuizIndex: null,
-    user:false,
-    userFlag: false,
+    user:'false',
+    // userFlag: false,
     validFlag: false,
     loginEmail:'',
     loginPass:'' ,
@@ -348,7 +355,7 @@ await  this.setState({
     started:null, 
     qstnNo: 0, 
   })
-  localStorage.setItem('user', false) 
+  localStorage.setItem('user', 'false') 
 }
 
   joinQuiz(quizIndex) {
@@ -387,15 +394,7 @@ await  this.setState({
       qstnNo:0, 
     });
   }
-
-// async  userAvailable(){
-
-// await  this.setState({ 
-//       userFlag: true,
-//       validFlag:true, 
-//     });
-//     alert()
-//   }
+  
 
   render() {
     const { userFlag, validFlag, quizzes, quiz, started, qstnNo, quizName, subQuizName, user } = this.state;
@@ -403,12 +402,9 @@ await  this.setState({
     // console.log(user)
     return (
       <div>
-        {console.log(user)}
-        {/* {console.log(userFlag)} */}
-        {/* {console.log(validFlag)} */}
-        {/* {this.userAvailable()} */}
+        {console.log(user)} 
         {(user === 'false' || user === null) && !userFlag && <Signup updateText={this.updateText} showLogin={this.showLogin} />}
-        {(user === 'false' || user === null) && (userFlag && !validFlag) && <Login validation={this.checkValidation} updateText={this.updateText} />}
+        {(user === 'false' || user === null) && (userFlag && !validFlag) && <Login showSignup={this.showSignup} validation={this.checkValidation} updateText={this.updateText} />}
         {(user === 'true'  || (userFlag && validFlag)) && (!quiz && !started) && <QuizList list={quizzes} onPress={this.joinQuiz} logout={this.logout} />}
         {(user === 'true'  || (userFlag && validFlag)) && (quiz && !started) && <QuizInfo quiz={quiz} onPress={this.startQuiz} onBack={this.showList} logout={this.logout} />}
         {(user === 'true'  || (userFlag && validFlag)) && started && <StartQuiz quizName={quizName} subQuizName={subQuizName} started={started} qstnNo={qstnNo} onPress={this.nextQstn} back={this.back} logout={this.logout}/>}
