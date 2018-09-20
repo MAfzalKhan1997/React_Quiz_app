@@ -326,7 +326,8 @@ class App extends Component {
     const { loginEmail, loginPass } = this.state
     if ((loginEmail.match(localStorage.getItem('userEmail'))) && (loginPass.match(localStorage.getItem('userPass')))) {
       await this.setState({
-        validFlag: true
+        validFlag: true,
+        user:true,
       })
       localStorage.setItem('user', true) 
     }
@@ -335,9 +336,10 @@ class App extends Component {
 
 
 async logout() {
-  this.setState({
+await  this.setState({
     // quizIndex: null,
     // subQuizIndex: null,
+    user:false,
     userFlag: false,
     validFlag: false,
     loginEmail:'',
@@ -386,14 +388,14 @@ async logout() {
     });
   }
 
-async  userAvailable(){
+// async  userAvailable(){
 
-await  this.setState({ 
-      userFlag: true,
-      validFlag:true, 
-    });
-    // alert()
-  }
+// await  this.setState({ 
+//       userFlag: true,
+//       validFlag:true, 
+//     });
+//     alert()
+//   }
 
   render() {
     const { userFlag, validFlag, quizzes, quiz, started, qstnNo, quizName, subQuizName, user } = this.state;
@@ -404,12 +406,12 @@ await  this.setState({
         {console.log(user)}
         {/* {console.log(userFlag)} */}
         {/* {console.log(validFlag)} */}
-        {user && this.userAvailable()}
-        {!userFlag && <Signup updateText={this.updateText} showLogin={this.showLogin} />}
-        {userFlag && !validFlag && <Login validation={this.checkValidation} updateText={this.updateText} />}
-        {userFlag && validFlag && !quiz && !started && <QuizList list={quizzes} onPress={this.joinQuiz} logout={this.logout} />}
-        {userFlag && validFlag && quiz && !started && <QuizInfo quiz={quiz} onPress={this.startQuiz} onBack={this.showList} logout={this.logout} />}
-        {userFlag && validFlag && started && <StartQuiz quizName={quizName} subQuizName={subQuizName} started={started} qstnNo={qstnNo} onPress={this.nextQstn} back={this.back} logout={this.logout}/>}
+        {/* {this.userAvailable()} */}
+        {(user === 'false' || user === null) && !userFlag && <Signup updateText={this.updateText} showLogin={this.showLogin} />}
+        {(user === 'false' || user === null) && (userFlag && !validFlag) && <Login validation={this.checkValidation} updateText={this.updateText} />}
+        {(user === 'true'  || (userFlag && validFlag)) && (!quiz && !started) && <QuizList list={quizzes} onPress={this.joinQuiz} logout={this.logout} />}
+        {(user === 'true'  || (userFlag && validFlag)) && (quiz && !started) && <QuizInfo quiz={quiz} onPress={this.startQuiz} onBack={this.showList} logout={this.logout} />}
+        {(user === 'true'  || (userFlag && validFlag)) && started && <StartQuiz quizName={quizName} subQuizName={subQuizName} started={started} qstnNo={qstnNo} onPress={this.nextQstn} back={this.back} logout={this.logout}/>}
       </div>
     )
   }
