@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../../App.css';
+import Header from '../../components/Header/Header'
 
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
@@ -15,10 +16,8 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
-import Typography from '@material-ui/core/Typography';
+import Typography from '@material-ui/core/Typography';  
 
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
 
 class Login extends Component {
     constructor(props) {
@@ -42,86 +41,78 @@ class Login extends Component {
         const { updateText, validation, showSignup } = this.props;
         const { showPass } = this.state;
         return (
-<div>
-<div >
-      <AppBar position="static" color="primary" >
-        <Toolbar>
-          <Typography variant="title" color="inherit">
-            QuizCloud 
-          </Typography>
-        </Toolbar>
-      </AppBar>
-    </div>
-            <div className='mainDiv'>
+            <div>
+                <Header />
+                <div className='mainDiv'>
 
 
-                <FormControl className="formDiv">
+                    <FormControl className="formDiv">
 
-                    <Typography variant="display2" >
-                        Sign In
-                </Typography>
-                    <br />
-                    <TextField className="formEle" id="input-with-icon-grid"
-                        // placeholder="abc@mail.com"
-                        // inputProps={{ maxLength: 17 }}
-                        // fullWidth={true}
-                        // style={{width:300}}
-                        label="Email"
-                        type="email"
-                        onChange={updateText}
-                        name="loginEmail"
-                        // helperText="Some important text"
-                        margin="normal"
-                    // required={true} "show * means required"
-                    // error={true} "shows like there is error"
-                    // multiline={true} "behaves like textarea"
-                    />
-
-
-                    <TextField className="formEle" id="input-with-icon-grid"
-                        label="Password"
-                        type={showPass ? 'text' : 'password'}
-                        onChange={updateText}
-                        name="loginPass"
-                        margin="normal"
-                        InputProps={{
-                            endAdornment: (
-                                <InputAdornment position="end">
-                                    <IconButton
-                                        aria-label="Toggle password visibility"
-                                        onClick={this.toggle.bind(this)}
-                                    >
-                                        {showPass ? <VisibilityOff /> : <Visibility />}
-                                    </IconButton>
-                                </InputAdornment>
-                            ),
-                        }}
-                    />
-                    <br />
+                        <Typography variant="display2" >
+                            Sign In
+                        </Typography>
+                        <br />
+                        <TextField className="formEle" id="input-with-icon-grid"
+                            // placeholder="abc@mail.com"
+                            // inputProps={{ maxLength: 17 }}
+                            // fullWidth={true}
+                            // style={{width:300}}
+                            label="Email"
+                            type="email"
+                            onChange={updateText}
+                            name="loginEmail"
+                            // helperText="Some important text"
+                            margin="normal"
+                        // required={true} "show * means required"
+                        // error={true} "shows like there is error"
+                        // multiline={true} "behaves like textarea"
+                        />
 
 
-                    <Button className="formEle" color="primary" >
-                        Forgot password?
-              </Button>
-                    <br />
+                        <TextField className="formEle" id="input-with-icon-grid"
+                            label="Password"
+                            type={showPass ? 'text' : 'password'}
+                            onChange={updateText}
+                            name="loginPass"
+                            margin="normal"
+                            InputProps={{
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            aria-label="Toggle password visibility"
+                                            onClick={this.toggle.bind(this)}
+                                        >
+                                            {showPass ? <VisibilityOff /> : <Visibility />}
+                                        </IconButton>
+                                    </InputAdornment>
+                                ),
+                            }}
+                        />
+                        <br />
 
-                    <Button className="formEle" variant="contained" color="primary" onClick={validation}>
-                        Sign In
-                </Button>
-                    <br /><br />
-                    <Typography variant="body2" >
-                        New to QuizCloud?
-                </Typography>
 
-                    <Button className="formEle" variant="contained" color="secondary" onClick={showSignup}>
-                        Sign up
-                </Button>
+                        <Button className="formEle" color="primary" >
+                            Forgot password?
+                        </Button>
+                        <br />
+
+                        <Button className="formEle" variant="contained" color="primary" onClick={validation}>
+                            Sign In
+                        </Button>
+                        <br /><br />
+                        <Typography variant="body2" >
+                            New to QuizCloud?
+                        </Typography>
+
+                        <Button className="formEle" variant="contained" color="secondary" onClick={showSignup}>
+                            Sign up
+                        </Button>
 
 
-                </FormControl>
+                    </FormControl>
 
 
-            </div>
+                </div>
             </div>
         );
     }

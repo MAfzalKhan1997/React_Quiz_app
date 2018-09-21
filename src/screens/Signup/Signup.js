@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../../App.css';
+import Header from '../../components/Header/Header'
 
 import FormControl from '@material-ui/core/FormControl';
 import TextField from '@material-ui/core/TextField';
@@ -15,10 +16,7 @@ import InputAdornment from '@material-ui/core/InputAdornment';
 import Visibility from '@material-ui/icons/Visibility';
 import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
-import Typography from '@material-ui/core/Typography';
-
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography'; 
 
 class Signup extends Component {
     constructor(props) {
@@ -44,16 +42,7 @@ class Signup extends Component {
         return (
 
             <div>
-                <div >
-                    <AppBar position="static" color="primary" >
-                        <Toolbar>
-                            <Typography variant="title" color="inherit">
-                                QuizCloud
-                            </Typography>
-                        </Toolbar>
-                    </AppBar>
-                </div>
-
+ <Header/>
                 <div className='mainDiv'>
 
                     <FormControl className="formDiv">
