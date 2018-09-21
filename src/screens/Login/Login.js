@@ -39,18 +39,11 @@ class Login extends Component {
         const { updateText, validation, showSignup } = this.props;
         const { showPass } = this.state;
         return (
-            // <div>
-            //     <input type="email" onChange={updateText} name="loginEmail" />
-            //     <input type="password" onChange={updateText} name="loginPass" />
-            //     <button onClick={validation}>Login</button>
-            //     <p>Dont have an Account?</p>
-            //     <button onClick={showSignup}>Sign-Up</button>
-            // </div>
 
             <div>
 
                 <FormControl className="formDiv">
-                    <br />
+                    <br /><br /><br />
                     <Typography variant="display2" >
                         Login
                 </Typography>
@@ -96,6 +89,15 @@ class Login extends Component {
                     <Button className="formEle" variant="contained" color="primary" onClick={validation}>
                         Log-In
                 </Button>
+                    <br />
+                    <Typography variant="body2" >
+                        Don't have an Account?
+                </Typography>
+
+                    <Button className="formEle" variant="contained" color="secondary" onClick={showSignup}>
+                        Sign-up
+                </Button>
+
                 </FormControl>
 
 

@@ -119,7 +119,7 @@ class QuizList extends Component {
 
   render() {
     const { started, qstnNo, back, quizName, subQuizName, logout } = this.props;
-    const { correct, scored, min, sec, date } = this.state;
+    const { correct, scored, min, sec } = this.state;
     return (
       <div className="App">
 
