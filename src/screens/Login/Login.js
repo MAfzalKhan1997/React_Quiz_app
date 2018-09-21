@@ -40,12 +40,12 @@ class Login extends Component {
         const { showPass } = this.state;
         return (
 
-            <div>
+            <div className='mainDiv'>
 
                 <FormControl className="formDiv">
-                    <br /><br /><br />
+                     
                     <Typography variant="display2" >
-                        Login
+                        Sign In
                 </Typography>
 
                     <TextField className="formEle" id="input-with-icon-grid"
@@ -86,16 +86,17 @@ class Login extends Component {
                     />
                     <br />
                     <br />
+                    <br />
                     <Button className="formEle" variant="contained" color="primary" onClick={validation}>
-                        Log-In
+                        Sign In
                 </Button>
                     <br />
                     <Typography variant="body2" >
-                        Don't have an Account?
+                        New to QuizCloud?
                 </Typography>
 
                     <Button className="formEle" variant="contained" color="secondary" onClick={showSignup}>
-                        Sign-up
+                        Sign up
                 </Button>
 
                 </FormControl>
