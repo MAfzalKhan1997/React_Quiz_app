@@ -6,6 +6,8 @@ import QuizInfo from './screens/QuizInfo/QuizInfo'
 import StartQuiz from './screens/StartQuiz/StartQuiz'
 import './App.css';
 
+import 'typeface-roboto'
+
 class App extends Component {
   constructor() {
     super()
@@ -402,6 +404,7 @@ class App extends Component {
     const { userFlag, validFlag, quizzes, quiz, started, qstnNo, quizName, subQuizName, user } = this.state;
 
     return (
+      <center>
       <div>
         {(user === 'false' || user === null) && !userFlag && <Signup updateText={this.updateText} showLogin={this.showLogin} />}
         {(user === 'false' || user === null) && (userFlag && !validFlag) && <Login showSignup={this.showSignup} validation={this.checkValidation} updateText={this.updateText} />}
@@ -409,6 +412,7 @@ class App extends Component {
         {(user === 'true' || (userFlag && validFlag)) && (quiz && !started) && <QuizInfo quiz={quiz} onPress={this.startQuiz} onBack={this.showList} logout={this.logout} />}
         {(user === 'true' || (userFlag && validFlag)) && started && <StartQuiz quizName={quizName} subQuizName={subQuizName} started={started} qstnNo={qstnNo} onPress={this.nextQstn} back={this.back} logout={this.logout} />}
       </div>
+      </center>
     )
   }
 
