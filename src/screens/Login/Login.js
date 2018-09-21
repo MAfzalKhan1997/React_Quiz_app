@@ -17,6 +17,9 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
 import Typography from '@material-ui/core/Typography';
 
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+
 class Login extends Component {
     constructor(props) {
         super(props);
@@ -39,15 +42,25 @@ class Login extends Component {
         const { updateText, validation, showSignup } = this.props;
         const { showPass } = this.state;
         return (
-
+<div>
+<div >
+      <AppBar position="static" color="primary" >
+        <Toolbar>
+          <Typography variant="title" color="inherit">
+            QuizCloud 
+          </Typography>
+        </Toolbar>
+      </AppBar>
+    </div>
             <div className='mainDiv'>
 
+
                 <FormControl className="formDiv">
-                     
+
                     <Typography variant="display2" >
                         Sign In
                 </Typography>
-
+                    <br />
                     <TextField className="formEle" id="input-with-icon-grid"
                         // placeholder="abc@mail.com"
                         // inputProps={{ maxLength: 17 }}
@@ -85,12 +98,17 @@ class Login extends Component {
                         }}
                     />
                     <br />
+
+
+                    <Button className="formEle" color="primary" >
+                        Forgot password?
+              </Button>
                     <br />
-                    <br />
+
                     <Button className="formEle" variant="contained" color="primary" onClick={validation}>
                         Sign In
                 </Button>
-                    <br />
+                    <br /><br />
                     <Typography variant="body2" >
                         New to QuizCloud?
                 </Typography>
@@ -99,9 +117,11 @@ class Login extends Component {
                         Sign up
                 </Button>
 
+
                 </FormControl>
 
 
+            </div>
             </div>
         );
     }

@@ -17,6 +17,9 @@ import VisibilityOff from '@material-ui/icons/VisibilityOff';
 
 import Typography from '@material-ui/core/Typography';
 
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+
 class Signup extends Component {
     constructor(props) {
         super(props);
@@ -39,78 +42,90 @@ class Signup extends Component {
         const { updateText, showLogin } = this.props;
         const { showPass } = this.state;
         return (
- 
-            <div className='mainDiv'>
 
-                <FormControl className="formDiv">
-                 
-                    <Typography variant="display2" >
-                        Sign Up
+            <div>
+                <div >
+                    <AppBar position="static" color="primary" >
+                        <Toolbar>
+                            <Typography variant="title" color="inherit">
+                                QuizCloud
+                            </Typography>
+                        </Toolbar>
+                    </AppBar>
+                </div>
+
+                <div className='mainDiv'>
+
+                    <FormControl className="formDiv">
+
+                        <Typography variant="display2" >
+                            Sign Up
+                        </Typography>
+                        <br />
+                        <TextField className="formEle" id="input-with-icon-grid"
+                            // placeholder="abc@mail.com"
+                            // inputProps={{ maxLength: 17 }}
+                            // fullWidth={true}
+                            // style={{width:300}}
+                            label="Username"
+                            type="text"
+                            onChange={updateText}
+                            name="name"
+                            // helperText="Some important text"
+                            margin="normal"
+                        // required={true} "show * means required"
+                        // error={true} "shows like there is error"
+                        // multiline={true} "behaves like textarea"
+                        />
+
+                        <TextField className="formEle" id="input-with-icon-grid"
+
+                            label="Email"
+                            type="email"
+                            onChange={updateText}
+                            name="userEmail"
+                            margin="normal"
+
+                        />
+
+                        <TextField className="formEle" id="input-with-icon-grid"
+                            label="Password"
+                            type={showPass ? 'text' : 'password'}
+                            onChange={updateText}
+                            name="userPassword"
+                            margin="normal"
+                            InputProps={{
+                                endAdornment: (
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            aria-label="Toggle password visibility"
+                                            onClick={this.toggle.bind(this)}
+                                        >
+                                            {showPass ? <VisibilityOff /> : <Visibility />}
+                                        </IconButton>
+                                    </InputAdornment>
+                                ),
+                            }}
+                        />
+                        <br />
+                        <br />
+
+                        <Button className="formEle" variant="contained" color="primary" onClick={showLogin}>
+                            Sign up
+                </Button>
+                        <br /><br />
+
+                        <Typography variant="body2" >
+                            Already on QuizCloud?
                 </Typography>
 
-                    <TextField className="formEle" id="input-with-icon-grid"
-                        // placeholder="abc@mail.com"
-                        // inputProps={{ maxLength: 17 }}
-                        // fullWidth={true}
-                        // style={{width:300}}
-                        label="Username"
-                        type="text"
-                        onChange={updateText}
-                        name="name"
-                        // helperText="Some important text"
-                        margin="normal"
-                    // required={true} "show * means required"
-                    // error={true} "shows like there is error"
-                    // multiline={true} "behaves like textarea"
-                    />
-
-                    <TextField className="formEle" id="input-with-icon-grid"
-
-                        label="Email"
-                        type="email"
-                        onChange={updateText}
-                        name="userEmail"
-                        margin="normal"
-
-                    />
-
-                    <TextField className="formEle" id="input-with-icon-grid"
-                        label="Password"
-                        type={showPass ? 'text' : 'password'}
-                        onChange={updateText}
-                        name="userPassword"
-                        margin="normal"
-                        InputProps={{
-                            endAdornment: (
-                                <InputAdornment position="end">
-                                    <IconButton
-                                        aria-label="Toggle password visibility"
-                                        onClick={this.toggle.bind(this)}
-                                    >
-                                        {showPass ? <VisibilityOff /> : <Visibility />}
-                                    </IconButton>
-                                </InputAdornment>
-                            ),
-                        }}
-                    />
-                    <br />
-                    <br />
-                    <Button className="formEle" variant="contained" color="secondary" onClick={showLogin}>
-                        Sign up
-                </Button>
-                <br />
-                
-                    <Typography variant="body2" >
-                        New to QuizCloud?
-                </Typography>
-
-                    <Button className="formEle" variant="contained" color="secondary" onClick={showSignup}>
-                        Sign up
+                        <Button className="formEle" variant="contained" color="secondary" onClick={showLogin}>
+                            sign in
                 </Button>
 
-                </FormControl>
+                    </FormControl>
 
-
+                </div>
             </div>
         );
     }
