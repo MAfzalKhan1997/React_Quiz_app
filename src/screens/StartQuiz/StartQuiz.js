@@ -5,12 +5,20 @@ import Header from '../../components/Header/Header'
 import Button from '@material-ui/core/Button';
 import NavigateNext from '@material-ui/icons/NavigateNext';
 
+import SentimentSatisfied from '@material-ui/icons/SentimentSatisfiedRounded';
+import SentimentVerySatisfied from '@material-ui/icons/SentimentVerySatisfiedRounded';
+import SentimentDissatisfied from '@material-ui/icons/SentimentDissatisfiedRounded';
+import SentimentVeryDissatisfied from '@material-ui/icons/SentimentVeryDissatisfiedRounded';
+
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
-// import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
+
+import CircularProgress from '@material-ui/core/CircularProgress';
+
+import Typography from '@material-ui/core/Typography';
 
 class QuizList extends Component {
   constructor() {
@@ -24,7 +32,9 @@ class QuizList extends Component {
       min: 0,
 
       correct: 0,
-      scored: false,
+      scored: true,
+
+      similey: null,
 
     }
     this.handleChange = this.handleChange.bind(this);
@@ -103,6 +113,30 @@ class QuizList extends Component {
     started.attemptDate = date.toLocaleDateString();
     started.attemptTime = date.toLocaleTimeString();
 
+    if (scored == 100) {
+      this.setState({
+        similey: <SentimentVerySatisfied className="similey" color="disabled" />
+      })
+    }
+    else
+      if (scored == 0) {
+        this.setState({
+          similey: <SentimentVeryDissatisfied className="similey" color="disabled" />
+        })
+      }
+      else
+        if (scored >= 60) {
+          this.setState({
+            similey: <SentimentSatisfied className="similey" color="disabled" />
+          })
+        }
+        else
+          if (scored < 60 && scored > 0) {
+            this.setState({
+              similey: <SentimentDissatisfied className="similey" color="disabled" />
+            })
+          }
+
   }
 
   quizTimer() {
@@ -148,13 +182,26 @@ class QuizList extends Component {
 
           <div>
             <Header logout={logout} />
+            
+            <Typography variant="display2" >
+              {quizName}
+            </Typography>
 
-            <h1>{quizName}</h1>
-            <h2>{subQuizName}</h2>
-            <p>Total Questions: {started.qArr.length}</p>
-            <p>Correct: {correct}</p>
-            <p>Percentage: {scored} %</p>
-            <button onClick={() => back()}>Back</button>
+            <div className='resultDiv'>
+              <div >
+
+                <h2>{subQuizName}</h2>
+                <CircularProgress size={200} thickness={2} variant="static" value={scored} />
+                {this.state.similey}
+                <p> {scored} %</p>
+                <p>Total Questions: {started.qArr.length}</p>
+                <p>Correct: {correct}</p>
+
+              </div>
+              <Button className="backBtn" size='large' variant="contained" color="primary" onClick={() => back()}>
+                back
+              </Button>
+            </div>
           </div>
           :
           <div>
@@ -165,9 +212,9 @@ class QuizList extends Component {
 
 
 
-              <FormControl component="fieldset" style={{margin:'15px 15px 30px 15px'}}>
+              <FormControl component="fieldset" style={{ margin: '15px 15px 30px 15px' }}>
 
-              <h3>{qstnNo + 1}. {started.qArr[qstnNo].question}</h3>
+                <h3>{qstnNo + 1}. {started.qArr[qstnNo].question}</h3>
                 {/* <FormLabel component="legend">Gender</FormLabel> */}
                 <RadioGroup
                   // aria-label="Gender"
@@ -187,7 +234,7 @@ class QuizList extends Component {
               </FormControl>
 
             </div>
-            
+
             <Button className="nextBtn" variant="fab" color="primary" onClick={this.updating.bind(this)}>
               <NavigateNext />
             </Button>
