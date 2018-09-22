@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import Header from '../../components/Header/Header'
 // import lightBlue from '@material-ui/core/colors/lightBlue';
 
+import Button from '@material-ui/core/Button';
+import NavigateNext from '@material-ui/icons/NavigateNext';
+
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 // import FormHelperText from '@material-ui/core/FormHelperText';
@@ -17,7 +20,7 @@ class QuizList extends Component {
 
       radioVal: null,
 
-      sec: 10,
+      sec: 30,
       min: 0,
 
       correct: 0,
@@ -26,7 +29,7 @@ class QuizList extends Component {
     }
     this.handleChange = this.handleChange.bind(this);
     this.quizTimer = this.quizTimer.bind(this);
-    // this.timer()
+    this.timer()
   }
 
   handleChange(e) {
@@ -160,9 +163,11 @@ class QuizList extends Component {
 
             <div className='qstnDiv'>
 
-              <h3>{qstnNo + 1}) {started.qArr[qstnNo].question}</h3>
 
-              <FormControl component="fieldset" >
+
+              <FormControl component="fieldset" style={{margin:'15px 15px 30px 15px'}}>
+
+              <h3>{qstnNo + 1}. {started.qArr[qstnNo].question}</h3>
                 {/* <FormLabel component="legend">Gender</FormLabel> */}
                 <RadioGroup
                   // aria-label="Gender"
@@ -171,18 +176,21 @@ class QuizList extends Component {
                   value={this.state.radioVal}
                   onChange={this.handleChange}
                 >
- 
+
                   <FormControlLabel value="1" name="option" control={<Radio />} label={started.qArr[qstnNo].option1} />
                   <FormControlLabel value="2" name="option" control={<Radio />} label={started.qArr[qstnNo].option2} />
                   <FormControlLabel value="3" name="option" control={<Radio />} label={started.qArr[qstnNo].option3} />
                   <FormControlLabel value="4" name="option" control={<Radio />} label={started.qArr[qstnNo].option4} />
 
                 </RadioGroup>
-              </FormControl> 
 
-              <button onClick={this.updating.bind(this)}>Next</button>
+              </FormControl>
 
             </div>
+            
+            <Button className="nextBtn" variant="fab" color="primary" onClick={this.updating.bind(this)}>
+              <NavigateNext />
+            </Button>
           </div>
 
         }

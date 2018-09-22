@@ -21,10 +21,10 @@ class App extends Component {
           description:'HTML stands for HyperText Markup Language, It defines the structure of a Web document by using a variety of tags and attributes.',
           subQuiz: [
             {
-              name: 'Quiz 1', questions: '3', time: '60', score: false,
+              name: 'Quiz 1', questions: '3', time: '30 sec', score: false,
               qArr: [
                 {
-                  question: "what is use for image insertion",
+                  question: "What is use for image insertion?",
                   option1: "img",
                   option2: "h1",
                   option3: "none",
@@ -32,7 +32,7 @@ class App extends Component {
                   answer: "1"
                 },
                 {
-                  question: "to underline the text",
+                  question: "To underline the text?",
                   option1: "u",
                   option2: "underline",
                   option3: "style",
@@ -52,7 +52,7 @@ class App extends Component {
               ]
             },
             {
-              name: 'Quiz 2', questions: '3', time: '40', score: false,
+              name: 'Quiz 2', questions: '3', time: '30 sec', score: false,
               qArr: [
                 {
                   question: "html use for",
@@ -89,7 +89,7 @@ class App extends Component {
           description:'CSS stands for Cascading Style Sheets, It describes how HTML elements are to be displayed on screen, paper, or in other media.',
           subQuiz: [
             {
-              name: 'Quiz 1', questions: '6', time: '60', score: false,
+              name: 'Quiz 1', questions: '6', time: '30 sec', score: false,
               qArr: [
                 {
                   question: "Css stands for?",
@@ -108,7 +108,7 @@ class App extends Component {
                   answer: "1"
                 },
                 {
-                  question: "how to link css",
+                  question: "How to link css?",
                   option1: "using link",
                   option2: "using button",
                   option3: "using javascript",
@@ -116,7 +116,7 @@ class App extends Component {
                   answer: "1"
                 },
                 {
-                  question: "to change the color we use",
+                  question: "To change the color we use?",
                   option1: "color:",
                   option2: "setColor:",
                   option3: "color-style",
@@ -124,7 +124,7 @@ class App extends Component {
                   answer: "1"
                 },
                 {
-                  question: "how to link css",
+                  question: "How to link css?",
                   option1: "using link",
                   option2: "using button",
                   option3: "using javascript",
@@ -132,7 +132,7 @@ class App extends Component {
                   answer: "1"
                 },
                 {
-                  question: "how to link css",
+                  question: "How to link css?",
                   option1: "using link",
                   option2: "using button",
                   option3: "using javascript",
@@ -150,7 +150,7 @@ class App extends Component {
           description:' JavaScript is a "client-side" programming language. JavaScript scripts are read, interpreted and executed in your Web browser.',
           subQuiz: [
             {
-              name: 'Quiz 1', questions: '4', time: '60', score: false,
+              name: 'Quiz 1', questions: '4', time: '30 sec', score: false,
               qArr: [
                 {
                   question: "How to create alert box?",
@@ -190,7 +190,7 @@ class App extends Component {
               ]
             },
             {
-              name: 'Quiz 2', questions: '6', time: '40', score: false,
+              name: 'Quiz 2', questions: '6', time: '30 sec', score: false,
               qArr: [
                 {
 
