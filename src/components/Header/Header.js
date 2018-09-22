@@ -15,7 +15,7 @@ class Header extends Component {
     console.log(this.props)
     return (
       <div >
-        <AppBar position="static" color="primary" >
+        <AppBar position="fixed" color="primary" >
           <Toolbar>
             <Typography variant="title" color="inherit" style={{flexGrow:'1',textAlign:'left'}}>
               QuizCloud

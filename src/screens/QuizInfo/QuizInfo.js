@@ -1,6 +1,14 @@
 import React, { Component } from 'react';
 import Header from '../../components/Header/Header'
 
+import Card from '@material-ui/core/Card';
+import CardActionArea from '@material-ui/core/CardActionArea';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import CardMedia from '@material-ui/core/CardMedia';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
 class QuizInfo extends Component {
   constructor(props) {
     super(props)
@@ -12,25 +20,74 @@ class QuizInfo extends Component {
       <div>
         <Header logout={logout} />
 
-        <h1>{quiz.name}</h1>
-        <ul>
-          {quiz.subQuiz.map((subQuiz, index) => {
-            return <li>
-              {<h3>{subQuiz.name}</h3>}
-              {subQuiz.score ? <p>Percentage: {subQuiz.score} %<br />Attempted Date: {subQuiz.attemptDate}
-                <br />Attempted Time: {subQuiz.attemptTime}</p>
-                :
-                <div>
-                  <p>Total Questions: {subQuiz.questions}</p>
-                  <p>Total Time: {subQuiz.time}</p>
-                  <button onClick={() => onPress(index)}>Start Quiz</button>
+        {/* <h1>{quiz.name}</h1> */}
+        <div  style={{ margin:'80px 3% 3% 3%'}}>
 
-                </div>
-              }
-            </li>
-          })}
-        </ul>
-        <button onClick={onBack}>Back</button>
+        {quiz.subQuiz.map((subQuiz, index) => {
+          return (
+
+            <Card
+              // className={classes.card}
+              style={{ maxWidth: 345, display: 'inline-block', margin: '1%' }}
+            >
+              <CardActionArea>
+                <CardMedia
+                  component="img"
+                  // className={classes.media}
+                  style={{ objectFit: 'cover' }}
+                  height="140"
+                  image={quiz.image}
+                  title={subQuiz.name}
+                />
+                <CardContent>
+                  <Typography gutterBottom variant="headline" component="h2" style={{ textAlign: 'left' }}>
+                    {subQuiz.name}
+                  </Typography>
+
+
+                  <Typography  variant="caption" style={{ textAlign: 'left',fontSize:'13px' }}>
+                  This {quiz.name} Quiz is based on the following criteria:<br/>
+                  </Typography>
+
+                  <Typography  variant="body1" style={{ textAlign: 'left' }}>
+                  Total Questions: {subQuiz.questions}
+                  <br/>
+                  Total Time: {subQuiz.time}
+                  </Typography>
+
+
+                </CardContent>
+              </CardActionArea>
+
+              <CardActions>
+              <Button  onClick={onBack} size="small" color="secondary">
+                  back
+                </Button>
+                <Button onClick={() => onPress(index)} size="small" color="primary">
+                  start
+                </Button>
+
+              </CardActions>
+
+
+            </Card>
+            // <li>
+            //   {<h3>{subQuiz.name}</h3>}
+            //   {subQuiz.score ? <p>Percentage: {subQuiz.score} %<br />Attempted Date: {subQuiz.attemptDate}
+            //     <br />Attempted Time: {subQuiz.attemptTime}</p>
+            //     :
+            //     <div>
+            //       <p>Total Questions: {subQuiz.questions}</p>
+            //       <p>Total Time: {subQuiz.time}</p>
+            //       <button onClick={() => onPress(index)}>Start Quiz</button>
+
+            //     </div>
+            //   }
+            // </li>
+          )
+        })}
+        </div>
+        {/* <button onClick={onBack}>Back</button> */}
       </div>
     )
   }

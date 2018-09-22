@@ -17,6 +17,8 @@ class App extends Component {
 
         {
           name: 'HTML',
+          image: require("./images/html.jpg") ,
+          description:'HTML stands for HyperText Markup Language, It defines the structure of a Web document by using a variety of tags and attributes.',
           subQuiz: [
             {
               name: 'Quiz 1', questions: '3', time: '60', score: false,
@@ -83,6 +85,8 @@ class App extends Component {
         },
         {
           name: 'CSS',
+          image: require("./images/css.jpg") ,
+          description:'CSS stands for Cascading Style Sheets, It describes how HTML elements are to be displayed on screen, paper, or in other media.',
           subQuiz: [
             {
               name: 'Quiz 1', questions: '6', time: '60', score: false,
@@ -142,6 +146,8 @@ class App extends Component {
         },
         {
           name: 'JavaScript',
+          image:  require("./images/js3.jpg") ,
+          description:' JavaScript is a "client-side" programming language. JavaScript scripts are read, interpreted and executed in your Web browser.',
           subQuiz: [
             {
               name: 'Quiz 1', questions: '4', time: '60', score: false,
