@@ -21,73 +21,79 @@ class QuizInfo extends Component {
         <Header logout={logout} />
 
         {/* <h1>{quiz.name}</h1> */}
-        <div  style={{ margin:'80px 3% 3% 3%'}}>
+        <div style={{ margin: '80px 3% 3% 3%' }}>
 
-        {quiz.subQuiz.map((subQuiz, index) => {
-          return (
+          {quiz.subQuiz.map((subQuiz, index) => {
+            return (
 
-            <Card
-              // className={classes.card}
-              style={{ maxWidth: 345, display: 'inline-block', margin: '1%' }}
-            >
-              <CardActionArea>
-                <CardMedia
-                  component="img"
-                  // className={classes.media}
-                  style={{ objectFit: 'cover' }}
-                  height="140"
-                  image={quiz.image}
-                  title={subQuiz.name}
-                />
-                <CardContent>
-                  <Typography gutterBottom variant="headline" component="h2" style={{ textAlign: 'left' }}>
-                    {subQuiz.name}
-                  </Typography>
+              <Card
+                // className={classes.card}
+                style={{ maxWidth: 345, display: 'inline-block', margin: '1%' }}
+              >
+                <CardActionArea>
+                  <CardMedia
+                    component="img"
+                    // className={classes.media}
+                    style={{ objectFit: 'cover' }}
+                    height="140"
+                    image={quiz.image}
+                    title={subQuiz.name}
+                  />
 
+                  {subQuiz.score ?
+                    <CardContent>
+                      <Typography gutterBottom variant="headline" component="h2" style={{ textAlign: 'left' }}>
+                        {subQuiz.name}
+                      </Typography>
 
-                  <Typography  variant="caption" style={{ textAlign: 'left',fontSize:'13px' }}>
-                  This {quiz.name} Quiz is based on the following criteria:<br/>
-                  </Typography>
+                      <Typography variant="caption" style={{ textAlign: 'left', fontSize: '13px' }}>
+                        You have attempted this Quiz.
+                      </Typography>
+                      <br />
+                      <Typography variant="body2" style={{ textAlign: 'left' }}>
+                        Percentage: {subQuiz.score} %
+                        <br />
+                        Attempted Date: {subQuiz.attemptDate}
+                        <br />
+                        Attempted Time: {subQuiz.attemptTime}
+                      </Typography>
 
-                  <Typography  variant="body1" style={{ textAlign: 'left' }}>
-                  Total Questions: {subQuiz.questions}
-                  <br/>
-                  Total Time: {subQuiz.time}
-                  </Typography>
+                    </CardContent>
+                    :
+                    <CardContent>
+                      <Typography gutterBottom variant="headline" component="h2" style={{ textAlign: 'left' }}>
+                        {subQuiz.name}
+                      </Typography>
 
+                      <Typography variant="caption" style={{ textAlign: 'left', fontSize: '13px' }}>
+                        This Quiz is based on the following criteria:
+                      </Typography>
+                      <br />
+                      <Typography variant="body2" style={{ textAlign: 'left' }}>
+                        Total Questions: {subQuiz.questions}
+                        <br />
+                        Total Time: {subQuiz.time}
+                        <br />
+                        Passing Score: 60 %
+                      </Typography>
+                    </CardContent>}
 
-                </CardContent>
-              </CardActionArea>
+                </CardActionArea>
 
-              <CardActions>
-              <Button  onClick={onBack} size="small" color="secondary">
-                  back
+                <CardActions>
+                  <Button onClick={onBack} size="small" color="secondary">
+                    back
                 </Button>
-                <Button onClick={() => onPress(index)} size="small" color="primary">
-                  start
-                </Button>
+                  {!subQuiz.score ? <Button onClick={() => onPress(index)} size="small" color="primary">
+                    start
+                </Button> : null}
 
-              </CardActions>
+                </CardActions>
 
-
-            </Card>
-            // <li>
-            //   {<h3>{subQuiz.name}</h3>}
-            //   {subQuiz.score ? <p>Percentage: {subQuiz.score} %<br />Attempted Date: {subQuiz.attemptDate}
-            //     <br />Attempted Time: {subQuiz.attemptTime}</p>
-            //     :
-            //     <div>
-            //       <p>Total Questions: {subQuiz.questions}</p>
-            //       <p>Total Time: {subQuiz.time}</p>
-            //       <button onClick={() => onPress(index)}>Start Quiz</button>
-
-            //     </div>
-            //   }
-            // </li>
-          )
-        })}
+              </Card>
+            )
+          })}
         </div>
-        {/* <button onClick={onBack}>Back</button> */}
       </div>
     )
   }

@@ -11,8 +11,7 @@ class Header extends Component {
   }
 
   render() {
-    const { logout } = this.props; 
-    console.log(this.props)
+    const { logout } = this.props;  
     return (
       <div >
         <AppBar position="fixed" color="primary" >
