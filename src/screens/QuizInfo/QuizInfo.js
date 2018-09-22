@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from '../../components/Header/Header'
 
 class QuizInfo extends Component {
   constructor(props) {
@@ -9,7 +10,7 @@ class QuizInfo extends Component {
     const { quiz, onBack, onPress, logout } = this.props;
     return (
       <div>
-        <button onClick={() => logout()}>Log-Out</button>
+        <Header logout={logout} />
 
         <h1>{quiz.name}</h1>
         <ul>

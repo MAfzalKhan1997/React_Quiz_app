@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Header from '../../components/Header/Header'
 
 class QuizList extends Component {
   constructor() {
@@ -127,7 +128,8 @@ class QuizList extends Component {
         {scored !== false ?
 
           <div>
-            <button onClick={() => logout()}>Log-Out</button>
+            <Header logout={logout} />
+ 
             <h1>{quizName}</h1>
             <h2>{subQuizName}</h2>
             <p>Total Questions: {started.qArr.length}</p>
@@ -137,6 +139,7 @@ class QuizList extends Component {
           </div>
           :
           <div>
+            <Header />
 
             <h4>{min}:{sec}</h4>
             <h3>{qstnNo + 1}) {started.qArr[qstnNo].question}</h3>
