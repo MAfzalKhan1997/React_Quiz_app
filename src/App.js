@@ -333,9 +333,17 @@ class App extends Component {
   }
 
   showLogin() {
+    const {userEmail, userPass} = this.state;
+    if(userEmail == ''  || userPass == ''){
+    alert('Fill all the fields');
+  }
+  else{
     this.setState({
-      userFlag: true
+      userFlag: true,
+      userEmail:'',
+      userPass:'',
     })
+  }
   }
 
 
