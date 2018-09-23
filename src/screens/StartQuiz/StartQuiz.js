@@ -32,7 +32,7 @@ class QuizList extends Component {
       min: 0,
 
       correct: 0,
-      scored: true,
+      scored: false,
 
       similey: null,
 
@@ -182,20 +182,27 @@ class QuizList extends Component {
 
           <div>
             <Header logout={logout} />
-            
-            <Typography variant="display2" >
-              {quizName}
-            </Typography>
 
+            <Typography variant="display1" >
+              {quizName}({subQuizName})
+            </Typography>
+            <br />
             <div className='resultDiv'>
               <div >
-
-                <h2>{subQuizName}</h2>
+                <br />
+                <br />
                 <CircularProgress size={200} thickness={2} variant="static" value={scored} />
                 {this.state.similey}
-                <p> {scored} %</p>
-                <p>Total Questions: {started.qArr.length}</p>
-                <p>Correct: {correct}</p>
+                <Typography variant="headline" >
+                  {scored} %
+                </Typography>
+                <br />
+                <Typography variant="subheading" >
+                  Total Questions: {started.qArr.length}
+                </Typography>
+                <Typography variant="subheading" >
+                  Correct: {correct}
+                </Typography>
 
               </div>
               <Button className="backBtn" size='large' variant="contained" color="primary" onClick={() => back()}>
@@ -205,9 +212,11 @@ class QuizList extends Component {
           </div>
           :
           <div>
-            <Header />
-            <h4>{min}:{sec}</h4>
-
+            <Header /> 
+            <Typography variant="title" >
+              {min}:{sec}
+            </Typography>
+            <br/>
             <div className='qstnDiv'>
 
 

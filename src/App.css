@@ -34,13 +34,11 @@
   right: 0;
   bottom: 0;
   left: 0;  
-  height: 480px;
-  /* background-color: green; */
+  height: 480px; 
   max-width:450px;
   width: 95%  ;
   border-radius: 5px;
-  box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.3);
-  /* margin-top: 10px; */
+  box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.3); 
 }
 
 @media (max-width:470px) { .mainDiv{ 
@@ -53,8 +51,7 @@
 
 .formDiv{
 
-  height: 100%;
-  /* background-color: yellow;  */
+  height: 100%; 
   width: 100%;
 }
 
@@ -64,19 +61,26 @@
 
 
 .qstnDiv{ 
-   /* background-color:  lightBlue ; */
+ 
    width:  95% ;
    max-width:  500px ;
    text-align: left ;
    box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
-   border-radius: 10px;
-   /* padding: 5px; */
+   border-radius: 10px;  
+
     /* box-shadow: 0 19px 38px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22); */
  
 }
 
 .resultDiv{ 
-  /* background-color:  lightBlue ; */
+ 
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;  
+  height: 375px;
   width:  95% ;
   max-width:  500px ; 
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
@@ -87,35 +91,25 @@
 }
 
 .nextBtn{
-  z-index: 1;
-  /* display: block; */
-  /* position: fixed; */
-  bottom: 27px;
-  /* right: 20px;  */
+  z-index: 1; 
+  bottom: 27px; 
 }
 
 .backBtn{
-  z-index: 1;
-  /* display: block; */
-  /* position: fixed; */
+  z-index: 1; 
   bottom: -18px;
   box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22) !important;
-  /* right: 20px;  */
+   
 }
 
 
-.similey{
-position: absolute;
- /* font-size: 240px !important; 
- right: 520px !important; 
- bottom: 288px !important; */
- z-index: 1;
- font-size: 220px !important; 
- right: 530px !important; 
-
- /* display: block; */
-  /* position: fixed; */
- /* right: 0 !important; */
- bottom: 298px !important;
- /* left: 0 !important; */
+.similey{ 
+ /* z-index: 1; */
+ font-size: 220px !important;  
+ position: absolute;
+ margin:auto;
+ top: -103px !important;
+ right: 0 !important;
+ bottom: 0 !important; 
+ left: 0 !important;
 }
