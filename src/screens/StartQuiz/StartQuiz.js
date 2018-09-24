@@ -82,11 +82,15 @@ class QuizList extends Component {
 
             await this.setState({
               correct: correct + 1,
+              radioVal: null,
             })
 
             onPress(qstnNo);
           }
           else {
+            await this.setState({
+              radioVal: null,
+            })
             onPress(qstnNo);
           }
     }

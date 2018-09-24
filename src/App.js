@@ -55,7 +55,7 @@ class App extends Component {
               name: 'Quiz 2', questions: '3', time: '30 sec', score: false,
               qArr: [
                 {
-                  question: "html use for",
+                  question: "HTML use for?",
                   option1: "structure",
                   option2: "styling",
                   option3: "scripting",
@@ -63,7 +63,7 @@ class App extends Component {
                   answer: "1"
                 },
                 {
-                  question: "to underline the text",
+                  question: "To underline the text?",
                   option1: "u",
                   option2: "underline",
                   option3: "style",
